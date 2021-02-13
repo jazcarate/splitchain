@@ -1,11 +1,9 @@
-ame: Release
-
+name: Release
 
 on:
   push:
     tags:
     - 'v*' # i.e. v1.0, v20.15.10
-
   
 jobs:
   create_release:
