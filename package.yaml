@@ -1,0 +1,66 @@
+name: splitchain
+version: 0.1.0.0
+github: "jazcarate/splitchain"
+license: MIT
+author: "Joaquin Azcarate <j@florius.com.ar>"
+maintainer: "Joaquin Azcarate <j@florius.com.ar>"
+copyright: "2021 Joaquin Azcarate"
+
+flags:
+  prod:
+    description: Prod build?
+    manual: true
+    default: false
+
+extra-source-files:
+  - README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - text
+
+default-extensions:
+  - OverloadedStrings
+  - NumericUnderscores
+
+ghc-options:
+  - -Wall
+  - -Werror=missing-fields
+  - -fno-warn-orphans
+  - -fno-warn-type-defaults
+  - -Wredundant-constraints
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-exported-signatures
+
+when:
+  - condition: flag(prod)
+    then:
+      ghc-options: [-O2]
+    else:
+      ghc-options: [-O0]
+
+
+library:
+  source-dirs: src
+
+executables:
+  splitchain-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - splitchain
+
+tests:
+  spec:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+      - splitchain
+      - hspec
+      - hspec-core
+      - QuickCheck
