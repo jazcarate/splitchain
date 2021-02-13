@@ -71,9 +71,13 @@ jobs:
           stack install --local-bin-path dist
       - if: matrix.os == 'windows-latest'
         name: Set extension to .exe on Windows
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run: echo "::set-env name=EXT::.exe"
 
       - name: Set binary path name
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run: echo "::set-env name=BINARY_PATH::./dist/splitchain-exe${{ env.EXT }}"
 
       - name: Compress binary
