@@ -1,7 +1,6 @@
 module Main where
 
-import SplitChain
+import qualified SplitChain
 
 main :: IO ()
-main = do
-  putStrLn hello
+main = SplitChain.main

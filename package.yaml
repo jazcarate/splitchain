@@ -18,6 +18,8 @@ extra-source-files:
 dependencies:
   - base >= 4.7 && < 5
   - text
+  - gitlib
+  - gitlib-libgit2
 
 default-extensions:
   - OverloadedStrings

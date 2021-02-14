@@ -3,3 +3,10 @@ resolver:
 
 packages:
 - .
+
+extra-deps:
+  - gitlib-3.1.2@sha256:0f7142d8d58f7717242d65238e8814f17f9bbe7224a463adf34f75262c536227,2949
+  - gitlib-libgit2-3.1.2.1@sha256:36bc92f117158440ca69e32051aabdf9df75be8a3fb5f45dff8828898e615a0a,2354
+  - git: https://github.com/LukaHorvat/text-icu.git # Use a patched version of text-icu from https://github.com/bos/text-icu/pull/36
+    commit: 9672dc725028b0b92e51ca6f69a78593978be78b
+    # text-icu is broken in windows https://github.com/haskell/text-icu/pull/36
